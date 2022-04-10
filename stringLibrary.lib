@@ -1,0 +1,181 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+/**
+* @file sringLibrary.lib
+*/
+
+
+typedef struct
+{
+    char *str;          
+    size_t length;
+    size_t alloc;       // stores the number of bytes allocated 
+} String;
+
+/**
+* @brief this function receives a source string, allocates space for the String object and a new cpy of the source, then copies the source to the String object 
+*
+* @param source is a string 
+*
+* @return a newly created string
+*/
+
+
+String *CreateString(String char *source)
+{
+    
+    String *s = malloc(sizeof(String));
+    
+    if (source != NULL)
+    {
+        size_t strLength = strlen(source);
+        s->alloc = strLength + 1;
+        s->str = (char*)malloc(s->alloc);
+        memcpy(s->str, source, strLength);
+        s->str[strLength] = '\0';
+        s->length = strLength
+    } 
+    else
+    {
+        s->alloc = 1;
+        s->str = (char*)malloc(s->alloc);
+        s->str[0] =  '\0';
+        s->length;
+    }
+    return s;
+}
+
+/**
+* @brief this function frees all resources of the string
+*
+* @param function takes in string
+*
+* @return if the string is deleted returns true, if not returns false
+*/
+
+BOOL DeleteString(String *str)
+{
+    bool deleted = false;
+    delStr =  memset(str,0,strlen(str));
+
+    if(delStr)
+    {
+        return true;
+    }
+    return false;
+}
+
+
+/**
+* @brief this function
+*
+* @param string
+*
+* @return string
+*/
+
+const char *GetCString(const String *s)
+{
+    return s->str;
+}
+
+
+/**
+* @brief this function returns the length of the string
+*
+* @param string
+*
+* @return length
+*/
+
+GetStringLength(const String *str)
+{
+    return strlen(str);
+}
+
+
+/**
+* @brief this function checks if string is empty
+*
+* @param passes in a string
+*
+* @return returns true if the length of the string is 0
+*/
+
+BOOL isEmpty(const String *str)
+{
+    return strlen(str) == 0;
+}
+
+
+/**
+* @brief this function compares two string, like strcmp it returns int values: 0 if equal, 1 if str1 is greater, -1 is str1 is less than str2
+*
+* @param takes in two strings
+*
+* @return int value
+*/
+
+int CompareString(const String *str1, const String *str2)
+{
+    int value = strcmp(str1, str2);
+    if (value == 0)
+    {
+        return 0 
+    }
+    else if (value  < 0)
+    {
+        return -1
+    }
+    else 
+    {
+        return 1
+    }
+}
+
+/**
+* @brief this function
+*
+* @param
+*
+* @return 
+*/
+
+
+String *CopyString(String *dst, const String *src)
+{
+   
+
+
+}
+
+/**
+* @brief this function copies string into another string array
+*
+* @param destination 
+* @param source
+* @return the copied string
+*/
+
+char *CopyCString(String *dst, const String *src)
+{
+    if (dst == NULL)
+    {
+        return NULL;
+    } 
+
+    char *ptr = dst;
+
+    while (*src != '\0')
+    {
+        *dst = *src;
+        dst++;
+        src++
+    }
+
+    *dst = '\0';
+    return ptr;
+}
